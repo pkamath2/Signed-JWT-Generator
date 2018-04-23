@@ -14,13 +14,16 @@ import java.util.Date;
  */
 public class SampleJwtTestUsing0AuthJWT {
 
-    private static String PATH_TO_PRIVATE_PEM = "<absolute path to your private key>";
+    private static String PATH_TO_PRIVATE_PEM = "/Users/purnimakamath/JWT/TRY3/secret2.pem";
     public static void main(String[] args) {
+        new SampleJwtTestUsing0AuthJWT().generateJWTSignedToken();
+    }
 
-        try {
+    private String generateJWTSignedToken() {
+        String token = null;
+        try(InputStream is = new FileInputStream(new File(PATH_TO_PRIVATE_PEM));
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));) {
 
-            InputStream is = new FileInputStream(new File(PATH_TO_PRIVATE_PEM));
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
             StringBuilder builder = new StringBuilder();
             for (String line = br.readLine(); line != null; line = br.readLine()) {
                 builder.append(line);
@@ -36,7 +39,7 @@ public class SampleJwtTestUsing0AuthJWT {
             Date oneHourPlus = cal.getTime();
 
             Algorithm algorithm = Algorithm.RSA256(null, privateKeyX509);
-            String token = JWT.create()
+            token = JWT.create()
                     .withAudience("Partners")
                     .withExpiresAt(oneHourPlus)
                     .withIssuer("DBS")
@@ -52,7 +55,8 @@ public class SampleJwtTestUsing0AuthJWT {
             System.out.println("Signed JWT Token => "+token);
         }  catch(Exception ioe){
             ioe.printStackTrace();
+            token = "Error";
         }
-
+        return token;
     }
 }
