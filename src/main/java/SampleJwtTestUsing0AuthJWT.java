@@ -55,25 +55,4 @@ public class SampleJwtTestUsing0AuthJWT {
         }
 
     }
-
-
-    public static byte[] loadPrivateKey(String fileName){
-        InputStream is = null;
-        byte[] encoded = null;
-        try {
-            is = new FileInputStream(new File(fileName));
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            StringBuilder builder = new StringBuilder();
-            boolean inKey = false;
-            for (String line = br.readLine(); line != null; line = br.readLine()) {
-                builder.append(line);
-            }
-            //
-            encoded = DatatypeConverter.parseBase64Binary(builder.toString());
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return encoded;
-    }
 }
