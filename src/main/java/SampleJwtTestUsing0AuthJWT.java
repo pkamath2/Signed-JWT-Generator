@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class SampleJwtTestUsing0AuthJWT {
 
-    private static String PATH_TO_PRIVATE_PEM = "/Users/purnimakamath/JWT/TRY3/secret2.pem";
+    private static String PATH_TO_PRIVATE_PEM = "<absolute path to your private key>";
     public static void main(String[] args) {
         new SampleJwtTestUsing0AuthJWT().generateJWTSignedToken();
     }
