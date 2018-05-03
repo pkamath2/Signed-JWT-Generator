@@ -14,13 +14,13 @@ import java.util.Date;
  */
 public class SampleJwtTestUsing0AuthJWT {
 
-    private static String PATH_TO_PRIVATE_PEM = "<absolute path to your private key>";
+    private static String PATH_TO_PRIVATE_PEM = "/Users/purnimakamath/JWT/TRY4/private2.pem";
     public static void main(String[] args) {
         new SampleJwtTestUsing0AuthJWT().generateJWTSignedToken();
     }
 
     private String generateJWTSignedToken() {
-        String token = null;
+        String token;
         try(InputStream is = new FileInputStream(new File(PATH_TO_PRIVATE_PEM));
             BufferedReader br = new BufferedReader(new InputStreamReader(is));) {
 
